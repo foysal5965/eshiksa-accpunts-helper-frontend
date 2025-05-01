@@ -6,6 +6,8 @@ import {
 import { motion } from 'framer-motion';
 import { useCollegesQuery } from '@/app/redux/api/collegeApi';
 import { useCreateBillMutation } from '@/app/redux/api/billApi';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 
 const fieldNames = [
@@ -23,6 +25,7 @@ const fieldNames = [
 const CreateBillPage = () => {
     const [formData, setFormData] = useState({
         collegeId: '',
+        companyName: '',
         admissionMsg: 0,
         groupMsg: 0,
         proReMigraMsg: 0,
@@ -33,11 +36,12 @@ const CreateBillPage = () => {
         billingTime: '',
         cloudSpaceUnit: 0,
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const query = {}
     const { data, isLoading } = useCollegesQuery({ ...query })
     const collegeData = data?.data
-
-
+    const [createBill, { isLoading: billLoading }] = useCreateBillMutation()
+    const router = useRouter()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type } = e.target;
         const parsedValue = type === 'number' ? Number(value) : value;
@@ -46,13 +50,49 @@ const CreateBillPage = () => {
             [name]: parsedValue,
         }));
     };
-const [createBill, {isLoading:billLoading}]= useCreateBillMutation()
-    const handleSubmit = async(e: any) => {
+
+    // const handleSubmit = async (e: any) => {
+    //     e.preventDefault();
+    //     if (isSubmitting) return;
+    
+    //     setIsSubmitting(true);
+    
+    //    await createBill(formData)
+    // };
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const res = await createBill(formData)
-        console.log(res)
-        
-    };
+        setIsSubmitting(true);
+        try {
+          const response = await fetch('http://localhost:3000/api/v1/bill/create-bill', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+      
+        //   if (!response.ok) {
+        //     const err = await response.json();
+        //     toast.error(err.message || "Bill creation failed.");
+        //     return;
+        //   }
+      
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+      
+          // 👇 Open PDF in a new browser tab
+          window.open(url, '_blank');
+      
+          toast.success('Bill created and opened!');
+        } catch (err) {
+          console.error(err);
+          toast.error("Something went wrong.");
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+      
+      
 
     return (
         <Container maxWidth="md" sx={{ mt: 5 }}>
@@ -90,6 +130,20 @@ const [createBill, {isLoading:billLoading}]= useCreateBillMutation()
                                 </TextField>
                             </Grid>
 
+                            <Grid item xs={12}>
+                                <TextField
+                                    select
+                                    label="Select Company"
+                                    name="companyName"
+                                    value={formData.companyName}
+                                    onChange={handleChange}
+                                    fullWidth
+                                    required
+                                >
+                                    <MenuItem value="ESHIKSA">eShiksa</MenuItem>
+                                    <MenuItem value="ARCHIMAZE">ARCHIMAZE</MenuItem>
+                                </TextField>
+                            </Grid>
 
                             {fieldNames.map(field => (
                                 <Grid item xs={12} sm={6} key={field.name}>
@@ -115,7 +169,7 @@ const [createBill, {isLoading:billLoading}]= useCreateBillMutation()
                                     fontWeight: 'bold',
                                     // width: '150px' // Initial shadow
 
-                                }} fullWidth type='submit'>Create Bill</Button>
+                                }} fullWidth type='submit' disabled={billLoading}>Create Bill</Button>
                             </Grid>
                         </Grid>
                     </form>

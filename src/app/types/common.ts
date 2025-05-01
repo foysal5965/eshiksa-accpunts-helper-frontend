@@ -97,4 +97,20 @@ export type ICollege ={
   collegeAddress: string;
   cloudSpacePricePerUnit: number
 }
+export type IBill ={
+  id: string;
+  cloudSpaceUnit: number;
+  billingTime: string;
+  admissionMsg: number;
+  groupMsg: number;
+  proReMigraMsg: number;
+  professionalAddMsg: number;
+  stdNtsMsg: number;
+  TutionFeeMsg: number;
+  absentMsg: number;
+  companyName: string;
+  collegeId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
