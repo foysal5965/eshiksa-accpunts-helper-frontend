@@ -1,5 +1,5 @@
 
-import { IMeta, User } from '@/types';
+import { IMeta, User } from '@/app/types';
 import { tagTypes } from '../tagTypesList';
 import { baseApi } from './baseApi';
 const USER_URL = '/user';

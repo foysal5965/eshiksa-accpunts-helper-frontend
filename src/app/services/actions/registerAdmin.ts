@@ -1,7 +1,10 @@
-"use client"; // Client-only context
+"use client";
+import { authKey } from "@/app/constants/authkey";
+import { getFromLocalStorage } from "@/app/utils/local-storage";
 
-import { authKey } from "@/constants/authkey";
-import { getFromLocalStorage } from "@/utils/local-storage";
+ // Client-only context
+
+
 
 export const registerAdmin = async (formData: FormData) => {
   const token = getFromLocalStorage(authKey); // Ensure token is retrieved client-side
