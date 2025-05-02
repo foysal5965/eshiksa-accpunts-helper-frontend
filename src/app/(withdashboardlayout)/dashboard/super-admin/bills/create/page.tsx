@@ -63,7 +63,7 @@ const CreateBillPage = () => {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-          const response = await fetch('http://localhost:3000/api/v1/bill/create-bill', {
+          const response = await fetch('https://eshiksa-2hnfgqidg-foysal5965s-projects.vercel.app/api/v1/bill/create-bill', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -80,7 +80,6 @@ const CreateBillPage = () => {
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
       
-          // 👇 Open PDF in a new browser tab
           window.open(url, '_blank');
       
           toast.success('Bill created and opened!');

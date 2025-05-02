@@ -1,6 +1,7 @@
-import { IAdmin, ICourse, ICourseCategory, IMeta } from "@/types"
+
 import { baseApi } from "./baseApi"
 import { tagTypes } from "../tagTypesList"
+import { IAdmin, IMeta } from "@/app/types"
 
 const ADMIN_URL = '/admin'
 export const adminApi = baseApi.injectEndpoints({
@@ -29,6 +30,15 @@ export const adminApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: [tagTypes.admin],
          }),
+         addAdminWithFormData: build.mutation({
+               query: (data) => ({
+                 url: "/user/create-admin",
+                 method: "POST",
+                 data,
+                 contentType:"multipart/form-data"
+               }),
+               invalidatesTags: [tagTypes.admin],
+             }),
         // updateAdmin: build.mutation({
         //     query: (id) => ({
         //        url: `/admin/${id}`,
@@ -52,6 +62,7 @@ export const adminApi = baseApi.injectEndpoints({
 export const {
      useAdminQuery,
      useDeleteadminMutation,
+     useAddAdminWithFormDataMutation
     //  useUpdateAdminMutation
      } = adminApi
 

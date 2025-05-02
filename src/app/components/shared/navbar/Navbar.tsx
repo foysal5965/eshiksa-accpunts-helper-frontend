@@ -43,33 +43,10 @@ const Navbar = () => {
         
     };
 
-    // Scroll handler
-    // const handleScroll = () => {
-    //     if (window.scrollY > lastScrollY) {
-    //         // Scrolling down
-    //         setShowNavbar(false);
-    //     } else {
-    //         // Scrolling up
-    //         setShowNavbar(true);
-    //     }
-    //     setLastScrollY(window.scrollY);
-    // };
-
-    // Set up scroll event listener
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, [lastScrollY]);
+    
 
     const menuItems = [
         { text: 'Home', link: '/' },
-        { text: 'About Us', link: '/about' },
-        { text: 'Success Story', link: '/success-story' },
-        { text: 'Freelancing', link: '#freelancing' },
-        { text: 'Contact', link: '/contact' },
     ];
 
     if (user) {
@@ -98,7 +75,7 @@ const Navbar = () => {
                 <Typography variant="h6" fontSize={30} component={Link} href="/">
                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         {/* <Image src={logo} alt="logo" /> */}
-                        It Bangladesh
+                        eShiksa
                     </motion.div>
                 </Typography>
 

@@ -27,37 +27,35 @@ const drawerWidth = 240;
 const menuItems: any = {
     
     admin: [
-        {
-            text: 'Exam', icon: <Category />, submenu: [
-                { text: 'Create Exam', icon: <Category />, href: '/dashboard/admin/exam/create' }
-            ]
-        },
-        {
-            text: 'Course Category', icon: <Category />, submenu: [
-                { text: 'Categories', icon: <Category />, href: '/dashboard/admin/courseCategory' },
-                { text: 'Create Category', icon: <Create />, href: '/dashboard/admin/courseCategory/create' }
-            ]
-        },
-        {
-            text: 'Courses', icon: <Class />, submenu: [
-                { text: 'Course', icon: <Class />, href: '/dashboard/admin/course' },
-                { text: 'Create Course', icon: <Create />, href: '/dashboard/admin/course/create' }
-            ]
-        },
-        { text: 'Students', icon: <Group />, href: '/dashboard/admin/student' },
-        { text: 'Contests', icon: <Group />, href: '/dashboard/admin/contest' },
-        { text: 'Contest Participants', icon: <Group />, href: '/dashboard/admin/contest-participants' },
-        {
-            text: 'Profile',
-            icon: <Person />,
-            submenu: [
-                { text: 'View Profile', href: '/dashboard/view' },
-                { text: 'Edit Profile', href: '/dashboard/edit' },
-                { text: 'Change Password', href: '/dashboard/change-password' },
-            ],
-        },
-    ],
-    super_admin: [
+        // {
+        //     text: 'Exam', icon: <Category />, submenu: [
+        //         { text: 'Create Exam', icon: <Category />, href: '/dashboard/admin/exam/create' }
+        //     ]
+        // },
+        // {
+        //     text: 'Course Category', icon: <Category />, submenu: [
+        //         { text: 'Categories', icon: <Category />, href: '/dashboard/admin/courseCategory' },
+        //         { text: 'Create Category', icon: <Create />, href: '/dashboard/admin/courseCategory/create' }
+        //     ]
+        // },
+        // {
+        //     text: 'Courses', icon: <Class />, submenu: [
+        //         { text: 'Course', icon: <Class />, href: '/dashboard/admin/course' },
+        //         { text: 'Create Course', icon: <Create />, href: '/dashboard/admin/course/create' }
+        //     ]
+        // },
+        // { text: 'Students', icon: <Group />, href: '/dashboard/admin/student' },
+        // { text: 'Contests', icon: <Group />, href: '/dashboard/admin/contest' },
+        // { text: 'Contest Participants', icon: <Group />, href: '/dashboard/admin/contest-participants' },
+        // {
+        //     text: 'Profile',
+        //     icon: <Person />,
+        //     submenu: [
+        //         { text: 'View Profile', href: '/dashboard/view' },
+        //         { text: 'Edit Profile', href: '/dashboard/edit' },
+        //         { text: 'Change Password', href: '/dashboard/change-password' },
+        //     ],
+        // },
         {
             text: 'Colleges', icon: <SupervisorAccountIcon />, submenu: [
                 { text: 'Colleges', href: '/dashboard/super-admin/college' },
@@ -71,30 +69,51 @@ const menuItems: any = {
 
             ]
         },
+    ],
+    super_admin: [
         {
-            text: 'Course Category', icon: <Category />, submenu: [
-                { text: 'Categories', icon: <Category />, href: '/dashboard/admin/courseCategory' },
-                { text: 'Create Category', icon: <Create />, href: '/dashboard/admin/courseCategory/create' }
+            text: 'Admin', icon: <SupervisorAccountIcon />, submenu: [
+                { text: 'Admins', href: '/dashboard/super-admin/admin' },
+                { text: 'Create admin', href: '/dashboard/super-admin/admin/create' },
             ]
         },
         {
-            text: 'Courses', icon: <Class />, submenu: [
-                { text: 'Course', icon: <Class />, href: '/dashboard/admin/course' },
-                { text: 'Create Course', icon: <Create />, href: '/dashboard/admin/course/create' }
+            text: 'Colleges', icon: <SupervisorAccountIcon />, submenu: [
+                { text: 'Colleges', href: '/dashboard/super-admin/college' },
+                { text: 'Add College', href: '/dashboard/super-admin/college/create' },
             ]
         },
-        { text: 'Students', icon: <Group />, href: '/dashboard/admin/student' },
-        { text: 'Contests', icon: <Group />, href: '/dashboard/admin/contest' },
-        { text: 'Contest Participants', icon: <Group />, href: '/dashboard/admin/contest-participants' },
         {
-            text: 'Profile',
-            icon: <Person />,
-            submenu: [
-                { text: 'View Profile', href: '/dashboard/view' },
-                { text: 'Edit Profile', href: '/dashboard/edit' },
-                { text: 'Change Password', href: '/dashboard/change-password' },
-            ],
+            text: 'Bills', icon: <Category />, submenu: [
+                { text: 'Bills', icon: <Category />, href: '/dashboard/super-admin/bills' },
+                { text: 'Create Bill', icon: <Category />, href: '/dashboard/super-admin/bills/create' },
+
+            ]
         },
+        // {
+        //     text: 'Course Category', icon: <Category />, submenu: [
+        //         { text: 'Categories', icon: <Category />, href: '/dashboard/admin/courseCategory' },
+        //         { text: 'Create Category', icon: <Create />, href: '/dashboard/admin/courseCategory/create' }
+        //     ]
+        // },
+        // {
+        //     text: 'Courses', icon: <Class />, submenu: [
+        //         { text: 'Course', icon: <Class />, href: '/dashboard/admin/course' },
+        //         { text: 'Create Course', icon: <Create />, href: '/dashboard/admin/course/create' }
+        //     ]
+        // },
+        // { text: 'Students', icon: <Group />, href: '/dashboard/admin/student' },
+        // { text: 'Contests', icon: <Group />, href: '/dashboard/admin/contest' },
+        // { text: 'Contest Participants', icon: <Group />, href: '/dashboard/admin/contest-participants' },
+        // {
+        //     text: 'Profile',
+        //     icon: <Person />,
+        //     submenu: [
+        //         { text: 'View Profile', href: '/dashboard/view' },
+        //         { text: 'Edit Profile', href: '/dashboard/edit' },
+        //         { text: 'Change Password', href: '/dashboard/change-password' },
+        //     ],
+        // },
     ],
     // Add more roles here if needed
 };
@@ -261,7 +280,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                             >
                                 <Menu />
                             </IconButton>
-                            <Link href='/'>IT Bangladesh</Link>
+                            <Link href='/'>eShiksa</Link>
                             <Box
                                 sx={{
                                     display: "flex",
@@ -271,22 +290,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                                 }}
                             >
                                 <Box>
-                                    <Typography
-                                        variant="body2"
-                                        noWrap
-                                        component="div"
-                                        sx={{ color: "rgba(11, 17, 52, 0.6)" }}
-                                    >
-                                        Hi, {isLoading ? "Loading..." : data?.data?.name}
-                                    </Typography>
-                                    <Typography
-                                        variant="h6"
-                                        noWrap
-                                        component="div"
-                                        sx={{ color: "primary.main" }}
-                                    >
-                                        Welcome to IDBD Services!
-                                    </Typography>
+                                    
+                                    
                                 </Box>
                                 <Stack direction="row" gap={3}>
                                     <Badge badgeContent={1} color="primary">

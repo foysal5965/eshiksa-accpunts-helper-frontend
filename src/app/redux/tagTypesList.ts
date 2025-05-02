@@ -24,5 +24,6 @@ export const tagTypesList=[
     tagTypes.result,
     tagTypes.contest,
     tagTypes.college,
-    tagTypes.bill
+    tagTypes.bill,
+    tagTypes.admin
 ]
