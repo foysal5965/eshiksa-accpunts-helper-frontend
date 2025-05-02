@@ -6,7 +6,7 @@ const nextConfig = {
       remotePatterns: [
         {
           protocol: "https",
-          hostname: "**",
+          hostname: "https://eshiksa.vercel.app/api/v1",
         },
       ],
     },

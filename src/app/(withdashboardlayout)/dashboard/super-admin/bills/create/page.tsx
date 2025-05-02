@@ -63,7 +63,7 @@ const CreateBillPage = () => {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-          const response = await fetch('https://eshiksa-2hnfgqidg-foysal5965s-projects.vercel.app/api/v1/bill/create-bill', {
+          const response = await fetch('https://eshiksa.vercel.app/api/v1/bill/create-bill', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

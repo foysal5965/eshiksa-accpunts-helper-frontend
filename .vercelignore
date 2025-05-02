@@ -1,0 +1,9 @@
+node_modules
+.vscode
+.next
+out
+coverage
+*.log
+*.tsbuildinfo
+.env*
+public/uploads
