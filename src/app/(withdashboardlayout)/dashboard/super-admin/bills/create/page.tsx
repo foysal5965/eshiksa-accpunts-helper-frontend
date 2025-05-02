@@ -77,12 +77,12 @@ const CreateBillPage = () => {
         //     return;
         //   }
       
-          const blob = await response.blob();
-          const url = URL.createObjectURL(blob);
+        //   const blob = await response.blob();
+        //   const url = URL.createObjectURL(blob);
       
-          window.open(url, '_blank');
+        //   window.open(url, '_blank');
       
-          toast.success('Bill created and opened!');
+        //   toast.success('Bill created and opened!');
         } catch (err) {
           console.error(err);
           toast.error("Something went wrong.");
