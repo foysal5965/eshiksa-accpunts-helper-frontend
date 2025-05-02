@@ -51,14 +51,7 @@ const CreateBillPage = () => {
         }));
     };
 
-    // const handleSubmit = async (e: any) => {
-    //     e.preventDefault();
-    //     if (isSubmitting) return;
-    
-    //     setIsSubmitting(true);
-    
-    //    await createBill(formData)
-    // };
+   
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -77,12 +70,19 @@ const CreateBillPage = () => {
         //     return;
         //   }
       
-        //   const blob = await response.blob();
-        //   const url = URL.createObjectURL(blob);
+          const blob = await response.blob();
       
-        //   window.open(url, '_blank');
+          // Create a download link
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'bill.pdf'; // 👈 Desired filename
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          window.URL.revokeObjectURL(url);
       
-        //   toast.success('Bill created and opened!');
+          toast.success('Bill created and downloaded!');
         } catch (err) {
           console.error(err);
           toast.error("Something went wrong.");
@@ -90,6 +90,7 @@ const CreateBillPage = () => {
           setIsSubmitting(false);
         }
       };
+      
       
       
 
