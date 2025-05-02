@@ -71,18 +71,11 @@ const CreateBillPage = () => {
         //   }
       
           const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
       
-          // Create a download link
-          const url = window.URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = 'bill.pdf'; // 👈 Desired filename
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          window.URL.revokeObjectURL(url);
+          window.open(url, '_blank');
       
-          toast.success('Bill created and downloaded!');
+          toast.success('Bill created and opened!');
         } catch (err) {
           console.error(err);
           toast.error("Something went wrong.");
@@ -90,7 +83,6 @@ const CreateBillPage = () => {
           setIsSubmitting(false);
         }
       };
-      
       
       
 
